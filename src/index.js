@@ -1,19 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import reducers from './reducers';
-import App from './app';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import './style.scss';
+import SideBar from './components/sidebar';
+import Project from './components/project';
+import People from './components/people';
+import Profile from './components/profile';
+
+const Welcome = (props) => {
+  return (
+    <div>
+    Welcome to DALI lab!
+    </div>
+  );
+};
+
+const FallBack = (props) => {
+  return (
+    <div>
+      URL not found!
+    </div>
+  );
+};
+const App = (props) => {
+  return (
+
+    <Router>
+      <div>
+        <SideBar />
+        <Route exact path="/" component={Welcome} />
+        <Route exact path="/project/:id" component={Project} />
+        <Route path="/people" component={People} />
+        <Route path="/member" component={Profile} />
+        <Route component={FallBack} />
+      </div>
+    </Router>
 
 
-// this creates the store with the reducers, and does some other stuff to initialize devtools
-const store = createStore(reducers, {}, compose(
-  applyMiddleware(),
-  window.devToolsExtension ? window.devToolsExtension() : f => f,
-));
+  );
+};
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
-, document.getElementById('main'));
+
+ReactDOM.render(<App />, document.getElementById('main'));
