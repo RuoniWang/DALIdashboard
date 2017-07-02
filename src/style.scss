@@ -3,6 +3,14 @@ body{
   background: darken(white, 0.2);
 }
 
-.active {
-  color: pink;
+.member-cover{
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.project-cover{
+  width: 400px;
+  height: 250px;
+  object-fit: cover;
 }

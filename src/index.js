@@ -31,7 +31,9 @@ class App extends Component {
     super(props);
     this.state = {
       projects: Immutable.Map(),
+      member: {},
     };
+    this.setProfile = this.setProfile.bind(this);
   }
   componentDidMount() {
     console.log('mounting!');
@@ -43,6 +45,12 @@ class App extends Component {
       console.log(err);
     });
   }
+
+  setProfile(person) {
+    this.setState({ member: person });
+    console.log(this.state.member);
+  }
+
   render() {
     return (
       <Router>
@@ -50,9 +58,9 @@ class App extends Component {
           <SideBar projects={this.state.projects} />
           <Switch>
             <Route exact path="/" component={Welcome} />
-            <Route exact path="/project/:id" component={Project} />
+            <Route path="/project/:id" component={Project} />
             <Route path="/people" component={People} />
-            <Route path="/member" component={Profile} />
+            <Route path="/member/:id" component={Profile} />
             <Route component={FallBack} />
           </Switch>
         </div>

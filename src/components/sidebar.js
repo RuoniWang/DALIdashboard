@@ -9,7 +9,7 @@ const SideBar = (props) => {
     >
       <SideNavItem userView
         user={{
-          background: 'images/dali-logo.jpg',
+          background: '../images/dali-logo.jpg',
           name: 'DALI',
         }}
       />
@@ -17,13 +17,12 @@ const SideBar = (props) => {
       <SideNavItem divider />
       <SideNavItem subheader>Projects</SideNavItem>
       {props.projects.entrySeq().map(([name, id]) => {
-        const link = `project/${id}`;
-        console.log('loading!');
+        const link = `/project/${id}`;
         return (
           <SideNavItem href={link}>{name}</SideNavItem>
         );
       })}
-
+      <SideNavItem href={'/people'}> People</SideNavItem>
     </SideNav>
 
   );
