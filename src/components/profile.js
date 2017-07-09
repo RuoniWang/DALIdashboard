@@ -5,6 +5,7 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 const ROOT_URL = 'https://dali-dashboard.herokuapp.com/api';
 
 // Create your own class, extending from the Marker class.
+/*
 class ExtendedMarker extends Marker {
   componentDidMount() {
     super.componentDidMount();
@@ -13,6 +14,7 @@ class ExtendedMarker extends Marker {
   }
 
 }
+*/
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +23,7 @@ class Profile extends Component {
       zoom: 13,
     };
   }
+
   componentDidMount() {
     const _id = this.props.match.params.id;
     console.log(_id);
@@ -42,7 +45,7 @@ class Profile extends Component {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
           />
-          <ExtendedMarker position={this.state.member.lat_long}>
+          <Marker position={this.state.member.lat_long}>
             <Popup>
               <span>
                 <img className="profile-cover" alt="cover" src={`../${this.state.member.iconUrl}`} width="320" height="316" />
@@ -52,7 +55,7 @@ class Profile extends Component {
                 </div>
               </span>
             </Popup>
-          </ExtendedMarker>
+          </Marker>
         </Map>
       </div>
     );
