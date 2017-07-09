@@ -1,31 +1,23 @@
 import React from 'react';
-import { SideNav, SideNavItem } from 'react-materialize';
+import { Link } from 'react-router-dom';
 
-const SideBar = (props) => {
+
+const Menu = (props) => {
   return (
-    <SideNav
-      trigger={<i className="material-icons">toc</i>}
-      options={{ closeOnClick: false }}
-    >
-      <SideNavItem userView
-        user={{
-          background: '../images/dali-logo.jpg',
-          name: 'DALI',
-        }}
-      />
+    <div className="menu-container">
+      <div className="scrollmenu">
+        {props.projects.entrySeq().map(([name, id]) => {
+          const link = `/project/${id}`;
+          return (
+            <Link to={link} className="project-link" >{name}</Link>
 
-      <SideNavItem divider />
-      <SideNavItem subheader>Projects</SideNavItem>
-      {props.projects.entrySeq().map(([name, id]) => {
-        const link = `/project/${id}`;
-        return (
-          <SideNavItem href={link}>{name}</SideNavItem>
-        );
-      })}
-      <SideNavItem href={'/people'}> People</SideNavItem>
-    </SideNav>
+          );
+        })}
+
+      </div>
+    </div>
 
   );
 };
 
-export default SideBar;
+export default Menu;

@@ -12,7 +12,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'public/build'), // //output files go to public/build
     publicPath: '/build/',
-    filename: 'bundle.js', //package it all up in one bundle
+    filename: 'bundle.js', // package it all up in one bundle
   },
   devServer: {
     contentBase: path.join(__dirname, 'public'), // any static files should go in public

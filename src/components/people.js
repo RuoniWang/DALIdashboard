@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
-const ROOT_URL = 'http://localhost:9090/api';
+const ROOT_URL = 'https://dali-dashboard.herokuapp.com/api';
 
 class People extends Component {
   constructor(props) {
@@ -25,10 +26,18 @@ class People extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.people.map((person) => {
-          return <div >{person.name}</div>;
-        })}
+      <div className="member-background">
+        <div className="member-page">
+          {this.state.people.map((person) => {
+            return (<div>
+              <Link className="member" to={`/member/${person._id}`}>
+                <img className="member-cover" alt="cover" src={`../${person.iconUrl}`} />
+                {person.name}
+              </Link>
+
+            </div>);
+          })}
+        </div>
       </div>
     );
   }
